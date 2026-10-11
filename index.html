@@ -6,16 +6,38 @@
 </head>
 <body>
 
-<h1>Familiedashboard</h1>
+<h1>FamilyWall-test</h1>
 
-<button onclick="test()">Test JavaScript</button>
+<button onclick="testFeed()">Test FamilyWall</button>
 
-<p id="status">Ikke testet ennå</p>
+<pre id="resultat">
+Ikke testet ennå
+</pre>
 
 <script>
-function test() {
-    document.getElementById("status").innerHTML =
-        "JavaScript virker!";
+async function testFeed() {
+
+    document.getElementById("resultat").innerText =
+        "Tester...";
+
+    try {
+
+        const response = await fetch(
+            "HER LIMER DU INN ICAL-LENKEN"
+        );
+
+        const text = await response.text();
+
+        document.getElementById("resultat").innerText =
+            text.substring(0, 1000);
+
+    }
+    catch(error) {
+
+        document.getElementById("resultat").innerText =
+            "Feil: " + error;
+
+    }
 }
 </script>
 
